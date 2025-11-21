@@ -1,0 +1,122 @@
+<!-- ======================= -->
+<!--       HEADER            -->
+<!-- ======================= -->
+<app-header-heuristica
+  numeroHeuristica="2"
+  titulo="Relación entre el Sistema y el Mundo Real"
+  concepto="La interfaz debe hablar el mismo idioma del usuario, utilizando conceptos, metáforas y terminología familiar. En lugar de usar jerga técnica, el sistema debe reflejar la forma en que las personas piensan y organizan la información en el mundo real. Íconos intuitivos, flujos lógicos, nombres comprensibles y elementos reconocibles ayudan a que el usuario entienda cómo usar el sistema sin entrenamiento previo. Esta heurística también implica respetar convenciones culturales y cognitivas, como el uso de colores, símbolos y estructuras que ya son conocidas."
+></app-header-heuristica>
+
+
+
+<!-- ========================================================= -->
+<!--                    EJEMPLO INCORRECTO                     -->
+<!-- ========================================================= -->
+<div class="p-6 max-w-lg mx-auto bg-white rounded-xl shadow border mt-6">
+  <h2 class="text-xl font-semibold mb-4 text-red-600">❌ Ejemplo Incorrecto</h2>
+
+  <p class="text-gray-700 mb-3">
+    Este sistema utiliza símbolos técnicos que no representan nada para el usuario,
+    no sigue metáforas del mundo real, y usa términos confusos.
+  </p>
+
+  <div class="space-y-3">
+    <button class="w-full p-3 rounded bg-gray-200 text-left">
+      <span class="font-bold">CMD–X32</span>
+      <p class="text-xs text-gray-600">Ejecutar proceso 445</p>
+    </button>
+
+    <button class="w-full p-3 rounded bg-gray-200 text-left">
+      <span class="font-bold">PROC–INF</span>
+      <p class="text-xs text-gray-600">Generar buffer temporal</p>
+    </button>
+
+    <button class="w-full p-3 rounded bg-gray-200 text-left">
+      <span class="font-bold">DEL–SYS</span>
+      <p class="text-xs text-gray-600">Liberar sector asignado</p>
+    </button>
+  </div>
+
+  <p class="mt-4 text-sm text-gray-500">
+    *Los textos no son familiares, no representan acciones del mundo real.
+  </p>
+</div>
+
+
+
+<!-- ========================================================= -->
+<!--                      EJEMPLO CORRECTO                     -->
+<!-- ========================================================= -->
+<div class="p-6 max-w-lg mx-auto bg-white rounded-xl shadow-lg border mt-10">
+  <h2 class="text-xl font-semibold mb-4 text-green-700">✅ Ejemplo Correcto</h2>
+
+  <div class="space-y-3">
+    <!-- ABRIR ESCRITORIO -->
+    <button 
+      class="flex items-center w-full p-4 bg-blue-50 hover:bg-blue-100 text-left rounded-lg border border-blue-200 transition-colors"
+      (click)="executeOperation('Abrir mi escritorio')">
+      <span class="text-2xl mr-4">🖥️</span>
+      <div>
+        <div class="font-medium">Abrir Escritorio</div>
+        <div class="text-sm text-gray-600">Ver todos mis archivos y carpetas</div>
+      </div>
+    </button>
+
+    <!-- NUEVA CARPETA -->
+    <button 
+      class="flex items-center w-full p-4 bg-green-50 hover:bg-green-100 text-left rounded-lg border border-green-200 transition-colors"
+      (click)="executeOperation('Crear nueva carpeta')">
+      <span class="text-2xl mr-4">📁</span>
+      <div>
+        <div class="font-medium">Nueva Carpeta</div>
+        <div class="text-sm text-gray-600">Organizar archivos en una carpeta</div>
+      </div>
+    </button>
+
+    <!-- COPIAR -->
+    <button 
+      class="flex items-center w-full p-4 bg-yellow-50 hover:bg-yellow-100 text-left rounded-lg border border-yellow-200 transition-colors"
+      (click)="executeOperation('Copiar archivos al portapapeles')">
+      <span class="text-2xl mr-4">📋</span>
+      <div>
+        <div class="font-medium">Copiar</div>
+        <div class="text-sm text-gray-600">Copiar archivos al portapapeles</div>
+      </div>
+    </button>
+
+    <!-- GUARDAR -->
+    <button 
+      class="flex items-center w-full p-4 bg-purple-50 hover:bg-purple-100 text-left rounded-lg border border-purple-200 transition-colors"
+      (click)="executeOperation('Guardar documento')">
+      <span class="text-2xl mr-4">💾</span>
+      <div>
+        <div class="font-medium">Guardar</div>
+        <div class="text-sm text-gray-600">Guardar cambios en el documento</div>
+      </div>
+    </button>
+
+    <!-- ELIMINAR -->
+    <button 
+      class="flex items-center w-full p-4 bg-red-50 hover:bg-red-100 text-left rounded-lg border border-red-200 transition-colors"
+      (click)="executeOperation('Mover a la papelera')">
+      <span class="text-2xl mr-4">🗑️</span>
+      <div>
+        <div class="font-medium">Eliminar</div>
+        <div class="text-sm text-gray-600">Mover archivos a la papelera</div>
+      </div>
+    </button>
+  </div>
+
+  <!-- FEEDBACK -->
+  @if (lastOperation()) {
+    <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+      <div class="flex items-center">
+        <span class="text-xl mr-3">✅</span>
+        <div>
+          <div class="font-medium text-blue-900">¡Listo!</div>
+          <div class="text-sm text-blue-700">{{ lastOperation() }}</div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

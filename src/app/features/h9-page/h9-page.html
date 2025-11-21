@@ -1,0 +1,85 @@
+
+
+  <!-- HEADER -->
+  <app-header-heuristica
+    numeroHeuristica="9"
+    titulo="Ayudar a reconocer, diagnosticar y recuperarse de errores"
+    concepto="Cuando un error ocurre, el sistema debe explicarlo con claridad y ofrecer instrucciones concretas para solucionarlo. Los mensajes deben ser humanos, específicos y orientados a la acción, evitando códigos técnicos o textos ambiguos. El usuario debe entender qué pasó, por qué ocurrió y qué puede hacer para corregirlo, con botones que le permitan recuperarse rápidamente."
+  />
+  <div class="p-6 max-w-3xl mx-auto">
+
+  <!-- ------------------------- -->
+  <!--     EJEMPLO MALO         -->
+  <!-- ------------------------- -->
+  <div class="bg-red-100 border border-red-300 p-6 rounded-xl mb-10">
+    <h2 class="text-xl font-bold text-red-800 mb-3">❌ Ejemplo Malo</h2>
+
+    <p class="text-red-900 mb-6">
+      El sistema muestra un mensaje vago, técnico y que no permite saber qué pasó ni qué hacer.
+    </p>
+
+    <div class="bg-white border rounded-xl p-6">
+      <h3 class="font-semibold mb-4">Formulario de Login</h3>
+
+      <input 
+        type="text"
+        placeholder="Email"
+        class="w-full p-3 border rounded mb-4"
+      />
+
+      <button class="w-full bg-blue-600 text-white p-3 rounded">
+        Ingresar
+      </button>
+
+      <!-- ERROR MALO -->
+      <p class="mt-4 text-sm text-red-700 bg-red-200 p-2 rounded">
+        Error 403: Bad Request.
+      </p>
+    </div>
+  </div>
+
+  <!-- ------------------------- -->
+  <!--     EJEMPLO BUENO        -->
+  <!-- ------------------------- -->
+  <div class="bg-green-100 border border-green-300 p-6 rounded-xl">
+    <h2 class="text-xl font-bold text-green-800 mb-3">✅ Ejemplo Bueno</h2>
+
+    <p class="text-green-900 mb-6">
+      El sistema explica claramente el error, su causa y cómo solucionarlo.
+      Además ofrece una acción para recuperarse.
+    </p>
+
+    <div class="bg-white border rounded-xl p-6">
+      <h3 class="font-semibold mb-4">Restablecer Email</h3>
+
+      <input 
+        type="text"
+        [(ngModel)]="email"
+        (input)="limpiarError()"
+        placeholder="tuemail@ejemplo.com"
+        class="w-full p-3 border rounded mb-2"
+      />
+
+      <button 
+        class="w-full bg-green-600 hover:bg-green-700 text-white p-3 rounded mb-3"
+        (click)="enviar()"
+      >
+        Enviar código
+      </button>
+
+      <!-- ERROR BUENO -->
+      @if (error()) {
+        <div class="mt-3 p-3 rounded-lg border border-red-300 bg-red-50 text-red-800 flex items-start">
+          <span class="mr-2 text-lg">⚠️</span>
+          <div>
+            <p class="font-semibold">No pudimos enviar el correo</p>
+            <p class="text-sm">{{ error() }}</p>
+            <p class="text-sm mt-1"><strong>Solución:</strong> Revisa que el correo tenga el formato correcto, por ejemplo: usuario@dominio.com</p>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+
+</div>

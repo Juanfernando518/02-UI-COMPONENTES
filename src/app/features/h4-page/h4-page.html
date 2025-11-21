@@ -1,0 +1,59 @@
+<!-- HEADER -->
+<app-header-heuristica
+  numeroHeuristica="4"
+  titulo="Consistencia y Estándares"
+  concepto="El sistema debe ser coherente en todos sus elementos, tanto visuales como funcionales. Las mismas acciones deben provocar resultados similares, y los componentes deben mantener una estética uniforme. Además, es importante alinearse con estándares de diseño amplios, como patrones de interacción comunes en plataformas móviles y web. La falta de consistencia genera confusión, aumenta el tiempo de aprendizaje y dificulta la navegación. Un buen diseño usa patrones familiares para guiar al usuario intuitivamente.">
+</app-header-heuristica>
+
+<!-- EJEMPLO MALO -->
+<section class="p-6 max-w-2xl mx-auto bg-red-50 border border-red-200 rounded-xl shadow mb-10">
+  <h2 class="text-2xl font-bold text-red-700 mb-4">❌ Ejemplo Malo</h2>
+  <p class="text-red-700 mb-6">
+    Este sistema usa botones distintos para funciones iguales: distintos colores, iconos inconsistentes, textos diferentes
+    y ubicaciones cambiantes. Esto confunde al usuario y dificulta aprender la interfaz.
+  </p>
+
+  <div class="grid grid-cols-2 gap-4">
+    <button class="bg-blue-400 text-white py-2 rounded">Guardar</button>
+    <button class="bg-green-600 text-white py-2 rounded flex items-center gap-2">
+      💾 Save
+    </button>
+
+    <button class="bg-yellow-300 text-black py-2 rounded">Enviar</button>
+    <button class="bg-purple-600 text-white py-2 rounded flex items-center gap-2">
+      🚀 Continuar
+    </button>
+
+    <button class="bg-gray-700 text-white py-2 rounded">Aceptar</button>
+    <button class="bg-pink-500 text-white py-2 rounded flex items-center gap-2">
+      ✔ Confirmar
+    </button>
+  </div>
+</section>
+
+<!-- EJEMPLO BUENO -->
+<section class="p-6 max-w-2xl mx-auto bg-green-50 border border-green-200 rounded-xl shadow">
+  <h2 class="text-2xl font-bold text-green-700 mb-4">✅ Ejemplo Bueno</h2>
+  <p class="text-green-700 mb-6">
+    Aquí todos los botones siguen un mismo estándar visual: mismo color para acciones principales,
+    mismos iconos y textos consistentes. El usuario entiende más rápido.
+  </p>
+
+  <div class="grid grid-cols-2 gap-4">
+    <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded flex items-center justify-center gap-2">
+      💾 Guardar
+    </button>
+
+    <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded flex items-center justify-center gap-2">
+      📤 Enviar
+    </button>
+
+    <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded flex items-center justify-center gap-2">
+      ✔ Confirmar
+    </button>
+
+    <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded flex items-center justify-center gap-2">
+      🔄 Continuar
+    </button>
+  </div>
+</section>

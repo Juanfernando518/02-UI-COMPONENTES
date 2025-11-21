@@ -1,0 +1,15 @@
+/* ===== LIGHT MODE ===== */
+
+:host {
+  display: block;
+}
+
+/* Cambia TODO el texto a color oscuro */
+:host * {
+  color: #1a1a1a !important;
+}
+
+/* Mantener icono en el color original */
+.header-icon span {
+  color: inherit !important;
+}

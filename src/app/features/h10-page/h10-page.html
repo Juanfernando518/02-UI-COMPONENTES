@@ -1,0 +1,105 @@
+  <!-- HEADER -->
+  <app-header-heuristica
+    numeroHeuristica="10"
+    titulo="Ayuda y documentación"
+    concepto="Aunque una interfaz bien diseñada puede ser entendida sin manuales, siempre debe existir documentación accesible que apoye al usuario cuando lo necesite. Esta ayuda debe estar integrada en la interfaz, ser fácil de buscar y proporcionar instrucciones claras, ejemplos y pasos concretos. Además, debe ser contextual: aparecer cerca de la función donde se requiere. La documentación efectiva reduce dudas, evita errores y acelera el proceso de aprendizaje."
+  />
+
+  <div class="p-6 max-w-3xl mx-auto">
+
+  <!-- ====================================================== -->
+  <!--                       EJEMPLO MALO                    -->
+  <!-- ====================================================== -->
+  <div class="bg-red-100 border border-red-300 p-6 rounded-xl mb-10">
+    <h2 class="text-xl font-bold text-red-800 mb-3">❌ Ejemplo Malo</h2>
+
+    <p class="text-red-900 mb-6">
+      No existe ayuda, ni documentación, ni instrucciones. 
+      El usuario no sabe qué hacer y el sistema no ofrece ninguna guía.
+    </p>
+
+    <div class="bg-white border rounded-xl p-6">
+      <h3 class="font-semibold mb-4">Formulario de búsqueda</h3>
+
+      <input 
+        type="text"
+        placeholder="Buscar producto..."
+        class="w-full p-3 border rounded mb-4"
+      />
+
+      <button class="w-full bg-blue-600 text-white p-3 rounded mb-3">
+        Buscar
+      </button>
+
+      <p class="text-gray-500 text-sm">
+        <!-- No hay ayuda -->
+        (Sin ayuda, sin instrucciones, sin ejemplos)
+      </p>
+    </div>
+  </div>
+
+  <!-- ====================================================== -->
+  <!--                     EJEMPLO BUENO                     -->
+  <!-- ====================================================== -->
+  <div class="bg-green-100 border border-green-300 p-6 rounded-xl">
+    <h2 class="text-xl font-bold text-green-800 mb-3">✅ Ejemplo Bueno</h2>
+
+    <p class="text-green-900 mb-6">
+      El sistema ofrece documentación clara, accesible y enfocada en tareas reales.
+      Incluye ejemplos y pasos concretos. La ayuda está disponible justo donde el usuario lo necesita.
+    </p>
+
+    <div class="bg-white border rounded-xl p-6">
+
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-semibold">Buscador de productos</h3>
+
+        <button 
+          (click)="toggleHelp()"
+          class="px-3 py-1 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-lg transition-colors text-sm"
+        >
+          ❓ Ayuda
+        </button>
+      </div>
+
+      <input 
+        type="text"
+        placeholder="Ej: martillo, clavos, pintura..."
+        class="w-full p-3 border rounded mb-4"
+      />
+
+      <button class="w-full bg-green-600 hover:bg-green-700 text-white p-3 rounded">
+        Buscar
+      </button>
+
+      <!-- PANEL DE AYUDA -->
+      @if (showHelp()) {
+        <div class="mt-4 border border-blue-300 bg-blue-50 p-4 rounded-lg text-blue-900">
+          <h4 class="font-semibold mb-2">📘 Cómo usar el buscador</h4>
+
+          <ul class="list-disc ml-5 space-y-1 text-sm">
+            <li>Escribe el nombre del producto que deseas encontrar.</li>
+            <li>Puedes buscar por marcas, categorías o palabras clave.</li>
+            <li>Evita escribir frases largas; usa términos concretos.</li>
+          </ul>
+
+          <div class="mt-3">
+            <p class="font-semibold text-sm">Ejemplos:</p>
+            <div class="bg-white p-2 border rounded text-sm mt-1">
+              • “Taladro”  
+              <br>
+              • “Pintura blanca”  
+              <br>
+              • “Tornillos 1/4”  
+            </div>
+          </div>
+
+          <p class="mt-3 text-xs text-blue-700">
+            Si necesitas más ayuda, visita la documentación completa o comunícate con soporte.
+          </p>
+        </div>
+      }
+    </div>
+  </div>
+
+</div>

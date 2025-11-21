@@ -1,0 +1,95 @@
+<!-- HEADER -->
+<app-header-heuristica
+  numeroHeuristica="5"
+  titulo="Prevención de Errores"
+  concepto="Es preferible prevenir errores antes que mostrar mensajes de error. Esta heurística se enfoca en diseñar interfaces que reduzcan la posibilidad de fallos mediante validaciones, restricciones inteligentes, autocompletados, mensajes proactivos y eliminación de opciones inválidas. Si un error es inevitable, el sistema debe guiar al usuario para evitarlo o corregirlo antes de confirmarlo. La prevención reduce frustraciones y mejora la calidad del resultado final.">
+</app-header-heuristica>
+
+<!-- EJEMPLO MALO -->
+<section class="p-6 max-w-xl mx-auto bg-red-50 border border-red-300 rounded-xl shadow mb-10">
+  <h2 class="text-2xl font-bold text-red-700 mb-4">❌ Ejemplo Malo</h2>
+  <p class="text-red-700 mb-6">
+    No valida formato de cuenta, permite montos negativos, no tiene confirmación y permite hacer doble clic.
+    El usuario puede cometer errores graves sin advertencias.
+  </p>
+
+  <div class="p-4 bg-white rounded-lg shadow">
+    <label class="block mb-2 text-sm">Número de cuenta</label>
+    <input type="text" class="w-full p-2 border rounded mb-4">
+
+    <label class="block mb-2 text-sm">Monto</label>
+    <input type="number" class="w-full p-2 border rounded mb-4">
+
+    <button class="w-full bg-blue-600 text-white p-2 rounded">
+      Transferir
+    </button>
+  </div>
+</section>
+
+<!-- EJEMPLO BUENO -->
+<section class="p-6 max-w-xl mx-auto bg-green-50 border border-green-300 rounded-xl shadow">
+  <h2 class="text-2xl font-bold text-green-700 mb-4">✅ Ejemplo Bueno</h2>
+  <p class="text-green-700 mb-6">
+    Esta versión previene errores: valida la cuenta, valida el monto, deshabilita el botón,
+    evita doble clic y muestra un estado de procesamiento.
+  </p>
+
+  <form (ngSubmit)="transfer()" class="p-4 bg-white rounded-lg shadow">
+
+    <!-- Número de Cuenta -->
+    <label class="block text-sm mb-1 font-medium">Número de Cuenta Destino</label>
+    <input
+      type="text"
+      [(ngModel)]="accountNumber"
+      name="accountNumber"
+      maxlength="10"
+      class="w-full p-3 border-2 rounded-lg mb-2"
+      [ngClass]="{
+        'border-green-500': validAccount(),
+        'border-red-500': !validAccount() && accountNumber.length > 0
+      }"
+      placeholder="Ej: 1234567890">
+
+    <p *ngIf="!validAccount() && accountNumber.length > 0" class="text-red-600 text-sm mb-4">
+      ⚠ El número de cuenta debe tener exactamente 10 dígitos.
+    </p>
+
+    <!-- Monto -->
+    <label class="block text-sm mb-1 font-medium">Monto a Transferir</label>
+    <input
+      type="number"
+      [(ngModel)]="amount"
+      name="amount"
+      class="w-full p-3 border-2 rounded-lg mb-2"
+      [ngClass]="{
+        'border-green-500': validAmount(),
+        'border-red-500': !validAmount() && amount !== ''
+      }"
+      placeholder="Monto positivo">
+
+    <p *ngIf="!validAmount() && amount !== ''" class="text-red-600 text-sm mb-4">
+      ⚠ Ingresa un monto válido mayor a 0.
+    </p>
+
+    <!-- Botón -->
+    <button
+      type="submit"
+      [disabled]="!readyToTransfer() || processing"
+      class="w-full p-3 rounded-lg font-semibold transition-all duration-200"
+      [ngClass]="{
+        'bg-blue-600 hover:bg-blue-700 text-white': readyToTransfer() && !processing,
+        'bg-gray-300 text-gray-500 cursor-not-allowed': !readyToTransfer() || processing
+      }">
+
+      <ng-container *ngIf="processing; else normalBtn">
+        Procesando...
+      </ng-container>
+
+      <ng-template #normalBtn>
+        🔒 Confirmar Transferencia
+      </ng-template>
+
+    </button>
+
+  </form>
+</section>
